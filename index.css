@@ -1,0 +1,29 @@
+body {
+    background: #202020;
+    color: #FFF;
+    display: flex;
+    height: 100vh;
+}
+
+h1 {
+    margin: auto;
+}
+
+div {
+    display: flex;
+    flex-direction: column;
+    gap: .8rem;
+    background: #ffffffc3;
+    border-radius: 10px;
+    margin: auto;
+    padding: 10px;
+}
+
+span {
+    color: black;
+    font-weight: 600;
+}
+
+span{
+    color: red;
+}
