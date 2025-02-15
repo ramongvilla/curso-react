@@ -141,7 +141,8 @@
 
 
 ---
-# Fundamentos y Técnicas Avanzadas de HTML y CSS
+
+# Fundamentos y Técnicas Avanzadas de HTML y CSS LESSON 2
 
 **Objetivo:** Comprender los conceptos básicos de HTML y CSS y explorar técnicas avanzadas para mejorar el diseño y la estructura web.
 
