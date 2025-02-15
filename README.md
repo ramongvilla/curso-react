@@ -139,3 +139,169 @@
 - Aprender JavaScript a fondo es clave para entender cómo funciona React y evitar errores comunes.
 - Se recomienda practicar cada concepto con ejercicios y pequeños proyectos antes de comenzar con React para tener una base sólida.
 
+
+---
+# Fundamentos y Técnicas Avanzadas de HTML y CSS
+
+**Objetivo:** Comprender los conceptos básicos de HTML y CSS y explorar técnicas avanzadas para mejorar el diseño y la estructura web.
+
+---
+
+## Sección 1: Introducción a HTML
+
+### 1.1. ¿Qué es HTML?
+
+HTML (HyperText Markup Language) es el lenguaje estándar para crear y estructurar contenido en la web. Utiliza etiquetas para definir elementos como encabezados, párrafos, listas, enlaces, imágenes y más.
+
+#### Ejemplo de un documento HTML básico:
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi primera página web</title>
+</head>
+<body>
+    <h1>¡Hola, mundo!</h1>
+    <p>Esta es mi primera página web con HTML.</p>
+</body>
+</html>
+```
+
+**Conceptos clave:**
+- **Etiquetas:** Bloques de construcción de HTML, como `<h1>` o `<p>`.
+- **Atributos:** Proporcionan información adicional, como `href` en un enlace.
+- **Elementos:** Compuestos por una etiqueta de apertura, contenido y una etiqueta de cierre.
+
+### 1.2. Estructura básica de una página HTML
+
+Cada documento HTML sigue una estructura estándar:
+
+- `<!DOCTYPE html>`: Define que el documento es HTML5.
+- `<html>`: Elemento raíz de la página.
+- `<head>`: Contiene metadatos, enlaces a estilos, scripts, etc.
+- `<body>`: Contiene el contenido visible de la página.
+
+**Ejemplo con metadatos y enlaces a CSS:**
+```html
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo HTML</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+```
+
+### 1.3. Elementos y etiquetas básicas
+
+#### Encabezados y párrafos
+```html
+<h1>Encabezado Principal</h1>
+<h2>Encabezado Secundario</h2>
+<p>Este es un párrafo de texto.</p>
+```
+
+#### Listas
+```html
+<ul>
+    <li>Elemento 1</li>
+    <li>Elemento 2</li>
+</ul>
+
+<ol>
+    <li>Primer elemento</li>
+    <li>Segundo elemento</li>
+</ol>
+```
+
+#### Enlaces
+```html
+<a href="https://www.google.com" target="_blank">Ir a Google</a>
+```
+
+#### Imágenes
+```html
+<img src="imagen.jpg" alt="Descripción de la imagen">
+```
+
+#### Formularios
+```html
+<form action="procesar.php" method="POST">
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" name="nombre">
+    <button type="submit">Enviar</button>
+</form>
+```
+
+---
+
+## Sección 2: Introducción a CSS
+
+### 2.1. ¿Qué es CSS?
+
+CSS (Cascading Style Sheets) se utiliza para aplicar estilos a los elementos HTML. Permite definir colores, fuentes, tamaños, posicionamiento y más.
+
+**Ejemplo de CSS en un archivo externo (`styles.css`):**
+```css
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    color: #333;
+}
+```
+
+### 2.2. Selectores y Especificidad
+
+#### Selectores básicos
+```css
+h1 { color: blue; }  /* Selector por etiqueta */
+#mi-id { font-size: 20px; }  /* Selector por ID */
+.mi-clase { text-align: center; }  /* Selector por clase */
+```
+
+#### Selectores avanzados
+```css
+div > p { color: red; }  /* Selecciona solo los párrafos hijos directos de un div */
+input[type="text"] { border: 1px solid black; }  /* Selecciona inputs de tipo texto */
+```
+
+---
+
+## Sección 3: Técnicas Avanzadas de HTML y CSS
+
+### 3.1. Diferencias entre Flexbox y Grid
+
+| Característica  | Flexbox | Grid Layout |
+|---------------|---------|-------------|
+| **Estructura**  | Unidimensional (fila o columna) | Bidimensional (filas y columnas) |
+| **Control**  | Mejor para alinear elementos en una línea | Mejor para diseñar estructuras de página completas |
+| **Alineación**  | Usa `justify-content` y `align-items` | Usa `grid-template-rows` y `grid-template-columns` |
+| **Distribución**  | Depende del orden en HTML | Puede reorganizar elementos sin cambiar HTML |
+| **Uso recomendado**  | Menús, barras de navegación, tarjetas en fila | Diseño completo de páginas o secciones complejas |
+
+### 3.2. Cálculo de Tamaños Responsivos con `calc()`
+
+#### Ejemplo: Ajustar el ancho de un contenedor dinámicamente
+```css
+.container {
+    width: calc(100% - 50px); /* Resta 50px del ancho total */
+    background: lightgray;
+    padding: 20px;
+}
+```
+
+#### Ejemplo: Tamaño de fuente dinámico según el viewport
+```css
+h1 {
+    font-size: calc(1rem + 2vw); /* Aumenta con el ancho de la pantalla */
+}
+```
+
+---
+
+## Conclusión
+
+Esta clase cubre desde los fundamentos básicos de HTML y CSS hasta técnicas avanzadas como Flexbox, Grid y el uso de `calc()` para diseños responsivos. Estos conceptos son esenciales para crear páginas web modernas y adaptativas.
+
+
