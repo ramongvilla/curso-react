@@ -306,3 +306,167 @@ h1 {
 Esta clase cubre desde los fundamentos básicos de HTML y CSS hasta técnicas avanzadas como Flexbox, Grid y el uso de `calc()` para diseños responsivos. Estos conceptos son esenciales para crear páginas web modernas y adaptativas.
 
 
+# Clase: Introducción a React con Vite
+
+## 1. Introducción a React y Vite
+### ¿Qué es React?
+React es una biblioteca de JavaScript para construir interfaces de usuario. Fue desarrollada por Facebook y permite crear aplicaciones web de manera eficiente y modular mediante componentes reutilizables.
+
+### ¿Qué es Vite?
+Vite es un "bundler" moderno que mejora el rendimiento del desarrollo de aplicaciones en React al ofrecer un entorno de desarrollo rápido con recarga en caliente (Hot Module Replacement, HMR).
+
+## 2. Instalación de React con Vite
+Para empezar un proyecto en React con Vite, sigue estos pasos:
+
+### Requisitos previos
+- Tener Node.js instalado (recomendado v14 o superior)
+- Tener npm o yarn instalado
+
+### Creación del proyecto con Vite
+Ejecuta el siguiente comando en la terminal:
+```sh
+npm create vite@latest mi-proyecto --template react
+```
+O con yarn:
+```sh
+yarn create vite@latest mi-proyecto --template react
+```
+Luego, navega al directorio del proyecto e instala las dependencias:
+```sh
+cd mi-proyecto
+npm install
+```
+Para ejecutar el proyecto en modo desarrollo:
+```sh
+npm run dev
+```
+Esto iniciará un servidor en `http://localhost:5173/`.
+
+## 3. Estructura del Proyecto en Vite
+Al crear un proyecto con Vite, se genera la siguiente estructura de carpetas:
+```
+mi-proyecto/
+├── node_modules/          # Dependencias del proyecto
+├── public/                # Archivos estáticos (favicon, imágenes, etc.)
+├── src/                   # Código fuente de la aplicación
+│   ├── App.jsx            # Componente principal de la aplicación
+│   ├── main.jsx           # Punto de entrada de la aplicación
+│   ├── assets/            # Recursos como imágenes y estilos
+│   ├── components/        # Componentes reutilizables
+│   ├── pages/             # Páginas principales de la aplicación
+│   ├── hooks/             # Hooks personalizados
+│   ├── context/           # Context API para manejo de estado global
+├── .gitignore             # Archivos y carpetas a ignorar por Git
+├── index.html             # Archivo HTML principal donde se monta React
+├── package.json           # Configuración del proyecto y dependencias
+├── vite.config.js         # Configuración del entorno de Vite
+├── README.md              # Documentación del proyecto
+```
+### Archivos principales
+- `index.html`: Archivo HTML principal donde se monta React.
+- `main.jsx`: Punto de entrada de la aplicación.
+- `App.jsx`: Componente principal donde se define la estructura de la aplicación.
+- `vite.config.js`: Configuración del entorno de Vite.
+
+## 4. Conceptos Claves en React
+### JSX (JavaScript XML)
+JSX es una sintaxis que permite escribir estructuras similares a HTML dentro de JavaScript.
+Ejemplo:
+```jsx
+function Saludo() {
+  return <h1>Hola, mundo!</h1>;
+}
+```
+### Componentes
+React se basa en componentes reutilizables. Un componente puede ser una función que retorna JSX.
+Ejemplo de un componente funcional:
+```jsx
+function Boton() {
+  return <button>Click me</button>;
+}
+```
+Uso en `App.jsx`:
+```jsx
+import Boton from './components/Boton';
+
+function App() {
+  return (
+    <div>
+      <h1>Bienvenido a React con Vite</h1>
+      <Boton />
+    </div>
+  );
+}
+export default App;
+```
+
+### Props (Propiedades)
+Las props permiten pasar datos entre componentes.
+Ejemplo:
+```jsx
+function Mensaje({ texto }) {
+  return <p>{texto}</p>;
+}
+```
+Uso:
+```jsx
+<Mensaje texto="Hola desde React" />
+```
+
+### PropTypes
+`PropTypes` se usa para validar las props de un componente y evitar errores.
+Para usarlo, primero instala la dependencia:
+```sh
+npm install prop-types
+```
+Ejemplo de uso en un componente:
+```jsx
+import PropTypes from 'prop-types';
+
+function Mensaje({ texto, numero }) {
+  return (
+    <div>
+      <p>{texto}</p>
+      <p>Número: {numero}</p>
+    </div>
+  );
+}
+
+Mensaje.propTypes = {
+  texto: PropTypes.string.isRequired,
+  numero: PropTypes.number
+};
+
+export default Mensaje;
+```
+En este caso:
+- `texto` es obligatorio y debe ser un string.
+- `numero` es opcional y debe ser un número.
+
+### Estado y Eventos
+React usa `useState` para manejar estados.
+Ejemplo:
+```jsx
+import { useState } from 'react';
+
+function Contador() {
+  const [contador, setContador] = useState(0);
+
+  return (
+    <div>
+      <p>Contador: {contador}</p>
+      <button onClick={() => setContador(contador + 1)}>Incrementar</button>
+    </div>
+  );
+}
+```
+
+## 5. Conclusión
+Hemos cubierto la instalación de React con Vite, la estructura del proyecto y los conceptos básicos como JSX, componentes, props, PropTypes y estado. En futuras clases, exploraremos temas avanzados como hooks, context API y manejo de rutas con React Router.
+
+### Ejercicio
+Crea un proyecto en REACT, para replicar el diseño de figma
+
+
+
+
