@@ -8,7 +8,7 @@
 
 ## 2. Fundamentos de JavaScript Necesarios
 
-### 2.1. Variables y Tipos de Datos
+### 2.1. Variables y Tipos de Datos, Editado
 - En JavaScript, existen tres maneras de declarar variables: `var`, `let` y `const`, cada una con su propio ámbito y reglas de uso.
 - Es crucial comprender los distintos tipos de datos (`string`, `number`, `boolean`, `null`, `undefined`, `object`, `array`) ya que en React se trabaja con estados y props que manejan estos tipos de valores.
 - Ejemplo:
