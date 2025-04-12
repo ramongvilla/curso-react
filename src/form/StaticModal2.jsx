@@ -13,7 +13,7 @@ export const StaticModal2 = ({ title= 'Modal React', BodyComponent, show = true,
         <Modal.Header closeButton>
           <Modal.Title>{title}</Modal.Title>
         </Modal.Header>
-        <Modal.Body>{BodyComponent && <BodyComponent></BodyComponent>}</Modal.Body>
+        <Modal.Body>{BodyComponent && <BodyComponent handleClose={handleClose} ></BodyComponent>}</Modal.Body>
         {/* <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>
               Close

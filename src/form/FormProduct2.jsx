@@ -172,7 +172,6 @@ import { useField } from "../hooks/useField";
 //   );
 // };
 
-
 // export const FormProduct2 = ({}) => {
 
 //   const email = useField({ type: "email", name: "email" });
@@ -201,58 +200,83 @@ import { useField } from "../hooks/useField";
 //     </Form>
 //   );
 // };
-export const FormProduct2 = ({}) => {
+// title: "NUEVO DESDE REACT",
+// sku: 123,
+// price: 109.95,
+// description:
+//   "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
+// category: "men's clothing",
+// image: "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
 
-  const email = useField({ type: "email", name: "email" });
-  const password = useField({ type: "password", name: "password" });
-  const name = useField({ type: "text", name: "name" });
+export const FormProduct2 = ({handleClose}) => {
+  // const email = useField({ type: "email", name: "email" });
+  // const password = useField({ type: "password", name: "password" });
+  // const name = useField({ type: "text", name: "name" });
 
-  const handleAddProduct = async (formProduct)=>{
-    const response = await fetch("https://ramonshoppage-production.up.railway.app/addProducts", {
+  // inputs for product
+  const title = useField({ type: "text", name: "title" });
+  const sku = useField({ type: "number", name: "sku" });
+  const price = useField({ type: "number", name: "price" });
+  const description = useField({ type: "text", name: "description" });
+  const category = useField({ type: "text", name: "category" });
+  const image = useField({ type: "text", name: "image" });
+
+  const handleAddProduct = async (formProduct) => {
+    const response = await fetch(
+      "https://ramonshoppage-production.up.railway.app/addProducts",
+      {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formProduct),
         // ...
-      });
+      }
+    );
 
-      console.log(response);
-      return response
-      
-  }
+    console.log(response);
+    return response;
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    const formData = {
-      email: email.value,
-      password: password.value,
-      name: name.value,
+    const formProduct = {
+      title: title.value,
+      sku: sku.value,
+      price: price.value,
+      description: description.value,
+      category: category.value,
+      image: image.value,
+      rating: {
+        rate: 3.9,
+        count: 120,
+      },
     };
-    handleAddProduct({
-        "sku": 123,
-        "price": 109.95,
-        "description": "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
-        "category": "men's clothing",
-        "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
-        "rating": {
-            "rate": 3.9,
-            "count": 120
-        },
-        "title": "NUEVO DESDE REACT"
-    }).then(res=>{
-        console.log(res);
-        
-    })
-    // console.log("Datos enviados:", formData);
+
+    
+
+
+    console.log(formProduct);
+    
+    console.log('Guardando...');
+   
+   
+    handleAddProduct(formProduct).then((res) => {
+      handleClose()
+      console.log("Datos enviados:",res );
+      console.log('Guardado');
+    });
+    
   };
-
-
 
   return (
     <Form onSubmit={handleSubmit}>
-      <InputField label={"Email"} {...email}></InputField>
-      <InputField label={"Password"} {...password}></InputField>
-      <InputField label={"Name"} {...name}></InputField>
+      <InputField label={"Titulo"} {...title}></InputField>
+      <InputField label={"SKU"} {...sku}></InputField>
+      <InputField label={"Precio"} {...price}></InputField>
+      <InputField label={"Descripcion"} {...description}></InputField>
+      <InputField label={"Categoría"} {...category}></InputField>
+      <InputField label={"Imagen (url)"} {...image}></InputField>
+
       <Button variant="primary" type="submit">
         Guardar
       </Button>

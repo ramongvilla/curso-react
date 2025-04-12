@@ -1,6 +1,7 @@
 // import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import { FormProduct2 } from "../form/FormProduct2";
 
 export const StaticModal = ({
   title = 'Modal React',
@@ -25,7 +26,9 @@ export const StaticModal = ({
         <Modal.Header closeButton>
           <Modal.Title>{title}</Modal.Title>
         </Modal.Header>
-        <Modal.Body>{BodyComponent && <BodyComponent />}</Modal.Body>
+        {/* <Modal.Body>{BodyComponent && <BodyComponent handleClose={handleClose} />}</Modal.Body> */}
+        
+        <FormProduct2 handleClose={'hi'}></FormProduct2>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Cerrar
