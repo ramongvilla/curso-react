@@ -1,50 +1,22 @@
-import { useState } from "react";
 import Container from "react-bootstrap/Container";
-import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import NavDropdown from "react-bootstrap/NavDropdown";
+import { Filters } from "./Filters";
 
-export const Header = ({filterProducts}) => {
-  const [category, setCategory] = useState("todas");
-
-
-  filterProducts()
-
-  const handleCategory = (category) => {
-      setCategory(category);
-      filterProducts(category)
-    //   console.log(props);
-  };
-
-  
-
+export const Header = ({ changeFilters, category }) => {
   return (
     <>
-      <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary mb-2">
+      <Navbar
+        sticky="top"
+        className="bg-body-tertiary"
+        bg="dark"
+        data-bs-theme="dark"
+      >
         <Container>
-          <Navbar.Brand href="#home">Carrito con REACT</Navbar.Brand>
-          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-          <Navbar.Collapse id="responsive-navbar-nav">
-            <Nav className="me-auto">
-              <NavDropdown title="Categorias" id="collapsible-nav-dropdown">
-                <NavDropdown.Item onClick={() => handleCategory("Calzado")}>
-                  Calzado
-                </NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item onClick={() => handleCategory("Mochilas")}>
-                  Mochilias
-                </NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item onClick={() => handleCategory("Ropa")}>
-                  Ropa
-                </NavDropdown.Item>
-              </NavDropdown>
-            </Nav>
-
-            <span>Categoria Seleccionada: {category}</span>
-          </Navbar.Collapse>
+          <Navbar.Brand>Carrito con React</Navbar.Brand>
         </Container>
       </Navbar>
+
+      <Filters onChange={changeFilters} category={category} />
     </>
   );
 };

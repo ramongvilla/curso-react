@@ -208,33 +208,13 @@ import { useField } from "../hooks/useField";
 // category: "men's clothing",
 // image: "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
 
-export const FormProduct = ({handleClose}) => {
-  // const email = useField({ type: "email", name: "email" });
-  // const password = useField({ type: "password", name: "password" });
-  // const name = useField({ type: "text", name: "name" });
-
-  // inputs for product
+export const FormProduct = ({ onSubmit }) => {
   const title = useField({ type: "text", name: "title" });
   const sku = useField({ type: "number", name: "sku" });
   const price = useField({ type: "number", name: "price" });
   const description = useField({ type: "text", name: "description" });
   const category = useField({ type: "text", name: "category" });
   const image = useField({ type: "text", name: "image" });
-
-  const handleAddProduct = async (formProduct) => {
-    const response = await fetch(
-      "https://ramonshoppage-production.up.railway.app/addProducts",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formProduct),
-        // ...
-      }
-    );
-
-    console.log(response);
-    return response;
-  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -252,20 +232,7 @@ export const FormProduct = ({handleClose}) => {
       },
     };
 
-    
-
-
-    console.log(formProduct);
-    
-    console.log('Guardando...');
-   
-   
-    handleAddProduct(formProduct).then((res) => {
-      handleClose()
-      console.log("Datos enviados:",res );
-      console.log('Guardado');
-    });
-    
+    onSubmit(formProduct);
   };
 
   return (
