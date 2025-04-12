@@ -1,4 +1,4 @@
-import { useState } from "react";
+// import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { InputField } from "./InputField";
@@ -208,7 +208,7 @@ import { useField } from "../hooks/useField";
 // category: "men's clothing",
 // image: "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
 
-export const FormProduct2 = ({handleClose}) => {
+export const FormProduct = ({handleClose}) => {
   // const email = useField({ type: "email", name: "email" });
   // const password = useField({ type: "password", name: "password" });
   // const name = useField({ type: "text", name: "name" });

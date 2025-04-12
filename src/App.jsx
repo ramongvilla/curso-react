@@ -1,11 +1,10 @@
-import { useState } from "react";
-import "./App.css";
-import { useEffect } from "react";
-import { Button } from "react-bootstrap";
+import { useEffect, useState } from "react";
 import { Layout } from "./components/Layout";
-import { ProductForm } from "./components/ProductForm";
+
 import { StaticModal } from "./components/StaticModal";
-import { FormTest } from "./components/Form";
+import { FormProduct } from "./form/FormProduct";
+import Button from "react-bootstrap/Button";
+import { Header } from "./components/Header";
 
 export const App = () => {
   const [products, setProducts] = useState([]);
@@ -18,65 +17,46 @@ export const App = () => {
     setProducts(data);
   };
 
-  // const handleAddProduct = async () => {
-  //   setShowModal(false);
-  //   await fetch('https://ramonshoppage-production.up.railway.app/addProducts', {
-  //     method: 'POST',
-  //     headers: { 'Content-Type': 'application/json' },
-  //     body: JSON.stringify({
-  //       ...newProduct,
-  //       price: parseFloat(newProduct.price),
-  //       rating: { rate: 0, count: 0 },
-  //     }),
-  //   });
-  //   setNewProduct({
-  //     sku: '', title: '', price: '', description: '', category: '', image: '',
-  //   });
-
-  //   fetchProducts();
-  // };
-
   useEffect(() => {
     fetchProducts();
   }, []);
 
-  // modal
+  //Modal
   const [showModal, setShowModal] = useState(false);
 
   const handleClose = () => setShowModal(false);
-  const handleConfirm = () => {
-    console.log("guardar", formProduct);
-
-    setShowModal(false);
+  const handleShow = () => {
+    setShowModal(true);
   };
 
-  // crear producto
+  // Filtro de Productos
+  let fillProducts = [];
 
-  const [formProduct,setFormProduct] = useState({})
+  const filterProducts = (category = "Ropa") => {
 
-  const handleFormSubmit = (data) => {
-    console.log(data);
-    
-    setFormProduct(data); // Guardamos los datos del formulario en el estado de App
-    console.log("Datos recibidos en App:", data);
+    fillProducts =
+    products.filter((product) => product.category === category) || [];
+    console.log(fillProducts);
   };
 
+  filterProducts();
 
   return (
-    <div className="container mt-4">
-      <Button onClick={() => setShowModal(true)} variant="primary">
+    <div className="container mt-4 d-flex flex-column">
+      <Header filterProducts={filterProducts} />
+
+      <Button variant="primary" className="" onClick={handleShow}>
         Nuevo Producto
       </Button>
 
       <StaticModal
-        show={showModal}
-        handleClose={handleClose}
-        handleConfirm={handleConfirm}
         title="Crear Producto"
-        BodyComponent={()=> <FormTest onFormSubmit={handleFormSubmit}/>}
+        show={showModal}
+        BodyComponent={FormProduct}
+        handleClose={handleClose}
       />
 
-      <Layout products={products} />
+      <Layout products={fillProducts} />
     </div>
   );
 };
