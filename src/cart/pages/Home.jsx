@@ -1,11 +1,11 @@
 import { Layout } from "../../components/Layout";
 
-import { StaticModal } from "../../components/StaticModal";
-import { FormProduct } from "../../form/FormProduct";
 import Button from "react-bootstrap/Button";
 import { useProducts } from "../hooks/useProducts";
 import { useModal } from "../hooks/useModal";
 import { useFilters } from "../hooks/useFilters";
+import { StaticModal } from "../../components/StaticModal";
+import { FormProduct } from "../../form/FormProduct";
 
 export const Home = () => {
   const { products, addProduct } = useProducts();
@@ -26,11 +26,12 @@ export const Home = () => {
       {/* <Header changeFilters={setFilters} category={filters.category} /> */}
 
       <div className="container">
-        <Button variant="dark" className="" onClick={handleShow}>
+        <Button variant="dark" onClick={handleShow}>
           Nuevo Producto
         </Button>
       </div>
       <div className="container mt-4 d-flex flex-column">
+        
         <StaticModal
           title="Crear Producto"
           show={showModal}
