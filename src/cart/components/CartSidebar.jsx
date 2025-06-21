@@ -6,9 +6,12 @@ import { useNavigate } from "react-router";
 
 export const CartSidebar = ({ show, onClose, cartItems = [] }) => {
   const { removeFromCart, clearCart } = useCart();
-  const total = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
+  const total = cartItems.reduce(
+    (acc, item) => acc + item.price * item.quantity,
+    0
+  );
 
-  const [showAlert, setShowAlert] = useState(false);
+  const [showAlert, setShowAlert] = useState(true);
   const navigate = useNavigate();
 
   const handleCheckout = () => {
@@ -22,15 +25,19 @@ export const CartSidebar = ({ show, onClose, cartItems = [] }) => {
       items: cartItems,
       total: total.toFixed(2),
     };
-    localStorage.setItem("purchases", JSON.stringify([...existing, newPurchase]));
+    localStorage.setItem(
+      "purchases",
+      JSON.stringify([...existing, newPurchase])
+    );
 
     // Limpiar y mostrar alerta
-    clearCart();
     setShowAlert(true);
-
+    
     // Redirigir al historial después de un momento
     setTimeout(() => {
       setShowAlert(false);
+      clearCart();
+      onClose();
       navigate("/historial");
     }, 1500);
   };
@@ -49,14 +56,23 @@ export const CartSidebar = ({ show, onClose, cartItems = [] }) => {
             <ListGroup variant="flush">
               {cartItems.map((item) => (
                 <ListGroup.Item key={item.id} className="d-flex gap-2">
-                  <Image src={item.image} alt={item.title} width={60} height={60} />
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    width={60}
+                    height={60}
+                  />
                   <div className="flex-grow-1">
                     <div className="fw-bold">{item.title}</div>
                     <div>Cantidad: {item.quantity}</div>
                     <div>Precio: ${item.price}</div>
                     <div>Total: ${item.price * item.quantity}</div>
                   </div>
-                  <Button variant="danger" size="sm" onClick={() => removeFromCart(item.id)}>
+                  <Button
+                    variant="danger"
+                    size="sm"
+                    onClick={() => removeFromCart(item.id)}
+                  >
                     Eliminar
                   </Button>
                 </ListGroup.Item>
@@ -65,10 +81,18 @@ export const CartSidebar = ({ show, onClose, cartItems = [] }) => {
 
             <div className="mt-3">
               <h5>Total a pagar: ${total.toFixed(2)}</h5>
-              <Button variant="dark" className="w-100 mt-2" onClick={handleCheckout}>
+              <Button
+                variant="dark"
+                className="w-100 mt-2"
+                onClick={handleCheckout}
+              >
                 Finalizar Compra
               </Button>
-              <Button variant="outline-danger" className="w-100 mt-2" onClick={clearCart}>
+              <Button
+                variant="outline-danger"
+                className="w-100 mt-2"
+                onClick={clearCart}
+              >
                 Vaciar Carrito
               </Button>
             </div>
